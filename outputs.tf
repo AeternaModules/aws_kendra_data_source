@@ -8,7 +8,7 @@ output "kendra_data_sources_arn" {
 }
 output "kendra_data_sources_configuration" {
   description = "Map of configuration values across all kendra_data_sources, keyed the same as var.kendra_data_sources"
-  value       = { for k, v in aws_kendra_data_source.kendra_data_sources : k => v.configuration if v.configuration != null && length(v.configuration) > 0 }
+  value       = { for k, v in aws_kendra_data_source.kendra_data_sources : k => one(v.configuration) if v.configuration != null && length(v.configuration) > 0 }
 }
 output "kendra_data_sources_created_at" {
   description = "Map of created_at values across all kendra_data_sources, keyed the same as var.kendra_data_sources"
@@ -16,7 +16,7 @@ output "kendra_data_sources_created_at" {
 }
 output "kendra_data_sources_custom_document_enrichment_configuration" {
   description = "Map of custom_document_enrichment_configuration values across all kendra_data_sources, keyed the same as var.kendra_data_sources"
-  value       = { for k, v in aws_kendra_data_source.kendra_data_sources : k => v.custom_document_enrichment_configuration if v.custom_document_enrichment_configuration != null && length(v.custom_document_enrichment_configuration) > 0 }
+  value       = { for k, v in aws_kendra_data_source.kendra_data_sources : k => one(v.custom_document_enrichment_configuration) if v.custom_document_enrichment_configuration != null && length(v.custom_document_enrichment_configuration) > 0 }
 }
 output "kendra_data_sources_data_source_id" {
   description = "Map of data_source_id values across all kendra_data_sources, keyed the same as var.kendra_data_sources"
